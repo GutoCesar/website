@@ -1,3 +1,11 @@
+:root {
+  --color-bg: #f3e5ab;
+  --color-text: #2c0e37;
+  --color-accent1: #ff6b35;
+  --color-accent2: #4ecdc4;
+  --color-accent3: #f7fff7;
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -7,9 +15,9 @@ body {
 }
 
 body.cartoon-style {
-    font-family: 'Comic Neue', cursive;
-    background-color: #f0f4f4;
-    color: #333;
+    font-family: 'Courier New', monospace;
+    background-color: var(--color-bg);
+    color: var(--color-text);
 }
 
 header {
@@ -91,14 +99,17 @@ footer {
 
 .nav-link {
     font-family: 'Bangers', cursive;
-    color: #fff;
-    font-size: 1.2em;
+    color: var(--color-accent3);
+    font-size: 1.4em;
     text-decoration: none;
-    transition: transform 0.3s ease;
+    margin: 0 15px;
+    transition: all 0.3s ease;
+    text-shadow: 2px 2px var(--color-text);
 }
 
 .nav-link:hover {
-    transform: scale(1.1);
+    color: var(--color-accent2);
+    transform: skew(-10deg);
 }
 
 .big-title {
@@ -110,7 +121,10 @@ footer {
 
 .section-title {
     font-family: 'Bangers', cursive;
-    color: #ff6b6b;
+    color: var(--color-accent1);
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 .cartoon-grid {
@@ -120,13 +134,19 @@ footer {
 }
 
 .cartoon-image {
-    border: 5px solid #333;
-    transform: rotate(-2deg);
-    transition: transform 0.3s ease;
+    border: 8px solid var(--color-text);
+    transform: rotate(3deg);
+    transition: all 0.3s ease;
+    box-shadow: 5px 5px 0 var(--color-accent1);
+}
+
+.cartoon-image:nth-child(even) {
+    transform: rotate(-3deg);
 }
 
 .cartoon-image:hover {
-    transform: rotate(2deg) scale(1.05);
+    transform: scale(1.05) rotate(0);
+    box-shadow: 10px 10px 0 var(--color-accent2);
 }
 
 .funky-footer {
@@ -136,15 +156,53 @@ footer {
 }
 
 .social-link {
-    color: #ff6b6b;
+    color: var(--color-accent2);
     text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover {
+    color: var(--color-accent1);
 }
 
 .animated-logo {
-    animation: bounce 2s infinite;
+    animation: spin 10s linear infinite;
 }
 
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.comic-strip {
+    display: flex;
+    overflow-x: auto;
+    padding: 20px 0;
+}
+
+.comic-strip img {
+    height: 200px;
+    margin-right: 20px;
+    border: 5px solid var(--color-text);
+}
+
+.splash-section {
+    background-image: url('background-pattern.png');
+    background-repeat: repeat;
+    padding: 50px 0;
+}
+
+@media (max-width: 768px) {
+    .groovy-header {
+        clip-path: none;
+    }
+    
+    .far-out-title {
+        font-size: 3em;
+    }
+    
+    .trippy-grid {
+        grid-template-columns: 1fr;
+    }
 }
